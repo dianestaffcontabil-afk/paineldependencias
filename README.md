@@ -23,3 +23,12 @@ Os dados ficam em `data/db.json`, diretório ignorado pelo Git. Em produção, f
 5. Abra o domínio e cadastre o primeiro administrador.
 
 O arquivo `railway.json` configura o comando de inicialização, a política de reinício e a verificação de saúde em `/health`. O volume é obrigatório para manter usuários e pendências entre novas implantações.
+
+## Testar no Render
+
+1. No Render, escolha **New > Blueprint**.
+2. Conecte o repositório `dianestaffcontabil-afk/paineldependencias`.
+3. Confirme o serviço definido em `render.yaml` e inicie a implantação.
+4. Quando o status ficar **Live**, abra a URL fornecida e cadastre o administrador.
+
+O Blueprint usa o plano gratuito para teste. Nesse plano, `DATA_DIR=/tmp/painel-data` é temporário: usuários e pendências podem ser perdidos quando o serviço reiniciar ou for publicado novamente. Para operação real, use armazenamento persistente.
