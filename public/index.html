@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Pendências</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <section id="auth" class="auth-shell">
+    <div class="brand"><span class="brand-mark">P</span><div><strong>Painel de Pendências</strong><small>Clareza para resolver o que foge da rotina.</small></div></div>
+    <form id="auth-form" class="auth-card">
+      <p class="eyebrow">ACESSO DA EQUIPE</p><h1 id="auth-title">Entrar no painel</h1>
+      <p id="auth-copy">Acompanhe ocorrências e atualize cada avanço.</p>
+      <label id="name-field" hidden>Seu nome<input id="auth-name" autocomplete="name"></label>
+      <label>E-mail<input id="auth-email" type="email" autocomplete="email" required></label>
+      <label>Senha<input id="auth-password" type="password" autocomplete="current-password" minlength="8" required></label>
+      <button class="primary" type="submit">Continuar</button><p id="auth-error" class="error"></p>
+    </form>
+  </section>
+
+  <div id="app" hidden>
+    <header><div class="brand"><span class="brand-mark">P</span><div><strong>Painel de Pendências</strong><small>Ocorrências extraordinárias</small></div></div><div class="header-actions"><span id="user-name"></span><button id="users-btn" class="ghost">Equipe</button><button id="logout-btn" class="ghost">Sair</button></div></header>
+    <main>
+      <div class="toolbar"><div><p class="eyebrow">VISÃO GERAL</p><h1>Pendências da equipe</h1><p>Todos acompanham. Cada avanço fica registrado.</p></div><button id="new-btn" class="primary">+ Nova pendência</button></div>
+      <div class="filters"><input id="search" placeholder="Buscar cliente ou pendência..."><select id="assignee-filter"><option value="">Todos os responsáveis</option></select></div>
+      <div id="board" class="board"></div>
+    </main>
+  </div>
+
+  <dialog id="issue-dialog"><form id="issue-form" class="modal"><div class="modal-head"><div><p class="eyebrow">NOVA OCORRÊNCIA</p><h2>Adicionar pendência</h2></div><button type="button" class="close">×</button></div><div class="form-grid"><label>Cliente<input name="client" required></label><label>Responsável<select name="assigneeId" required></select></label><label class="wide">Qual é a pendência?<input name="title" required></label><label class="wide">Descrição<textarea name="description" required></textarea></label><label class="wide">O que deve ser feito?<textarea name="action"></textarea></label><label>Prioridade<select name="priority"><option value="baixa">Baixa</option><option value="media" selected>Média</option><option value="alta">Alta</option><option value="urgente">Urgente</option></select></label><label>Prazo<input name="dueDate" type="date"></label></div><p class="error"></p><button class="primary" type="submit">Criar pendência</button></form></dialog>
+  <dialog id="detail-dialog"><div id="detail" class="modal detail"></div></dialog>
+  <dialog id="users-dialog"><div class="modal"><div class="modal-head"><div><p class="eyebrow">ACESSOS</p><h2>Equipe</h2></div><button type="button" class="close">×</button></div><div id="user-list" class="user-list"></div><form id="user-form"><h3>Novo usuário</h3><div class="form-grid"><label>Nome<input name="name" required></label><label>E-mail<input name="email" type="email" required></label><label>Senha provisória<input name="password" type="password" minlength="8" required></label><label>Perfil<select name="role"><option value="member">Membro</option><option value="admin">Administrador</option></select></label></div><p class="error"></p><button class="primary" type="submit">Adicionar usuário</button></form></div></dialog>
+  <script src="/app.js"></script>
+</body>
+</html>
